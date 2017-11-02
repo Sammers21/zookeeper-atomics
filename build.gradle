@@ -63,3 +63,13 @@ install {
         }
     }
 }
+
+// test coverage 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled false
+    }
+}
+
+check.dependsOn jacocoTestReport

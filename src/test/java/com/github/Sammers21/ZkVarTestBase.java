@@ -63,7 +63,7 @@ public class ZkVarTestBase {
     private void logDelmer() {
         log.info("\n---------------------------------------------------------------------------\n");
     }
-    
+
     /**
      * Returns a free port number on localhost.
      * <p>

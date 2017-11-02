@@ -72,6 +72,7 @@ public class ZkVariables {
 
         try {
             connectionLatch.await();
+            log.info("Connected to Zookeeper");
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

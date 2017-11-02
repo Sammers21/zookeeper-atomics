@@ -64,7 +64,7 @@ public class ZkAtomicVar {
                     setValue(val);
                 }
             } catch (KeeperException e) {
-
+                update();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -75,26 +75,22 @@ public class ZkAtomicVar {
         return new String(getValue());
     }
 
-//    boolean compareAndSet(String expect, String update) {
-//
-//    }
-
     protected ZkAtomicVar(String name, ZooKeeper zooKeeper, ZkVariables zkVariables) {
         this.name = name;
         this.zooKeeper = zooKeeper;
         this.zkVariables = zkVariables;
     }
 
-    protected Watcher watcher() {
-        return event -> {
-//            if (event.getType() == Watcher.Event.EventType.NodeDataChanged) {
-//                String path = event.getPath();
-//                log.info("data changed at " + path);
-//                update(path);
-//                log.info("current value of variable " + name + " = " + getAsString());
-//            }
-        };
-    }
+//    protected Watcher watcher() {
+//        return event -> {
+////            if (event.getType() == Watcher.Event.EventType.NodeDataChanged) {
+////                String path = event.getPath();
+////                log.info("data changed at " + path);
+////                update(path);
+////                log.info("current value of variable " + name + " = " + getAsString());
+////            }
+//        };
+//    }
 
     /**
      * Force variable to check for updates
@@ -106,7 +102,7 @@ public class ZkAtomicVar {
             synchronized (lock) {
                 byte[] data = zooKeeper.getData(
                         path,
-                        watcher(),
+                        null,
                         stat);
                 setValue(data);
             }

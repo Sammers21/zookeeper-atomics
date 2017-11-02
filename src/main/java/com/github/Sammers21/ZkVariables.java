@@ -40,7 +40,7 @@ public class ZkVariables {
     // for the first constructor
     private ExecutorService executor = Executors.newSingleThreadExecutor();
     // route to the parent zNode
-    private String zNodeName;
+    public String zNodeName;
     // comma separated host:port pairs, each corresponding to a zk server
     private String zkConnectString;
     // the future will be completed as soon as we will be connected with zk

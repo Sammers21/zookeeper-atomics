@@ -54,7 +54,7 @@ public class ZkVarTest extends ZkVarTestBase {
 
             assertTrue(var1.getAsString().equals("How are you?"));
 
-            for (int counter = 1; counter < 10_000; counter++) {
+            for (int counter = 1; counter < 1_000; counter++) {
                 String stForm = String.valueOf(counter);
                 var.changeValueTo(stForm);
 

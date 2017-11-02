@@ -60,11 +60,10 @@ public class ZkVarTestBase {
         logDelmer();
     }
 
-    void logDelmer() {
+    private void logDelmer() {
         log.info("\n---------------------------------------------------------------------------\n");
     }
-
-
+    
     /**
      * Returns a free port number on localhost.
      * <p>

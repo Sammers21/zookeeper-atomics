@@ -38,15 +38,15 @@ public class ZkVariables {
     private static final Logger log = Logger.getLogger(ZkVariables.class);
 
     // for the first constructor
-    ExecutorService executor = Executors.newSingleThreadExecutor();
+    private ExecutorService executor = Executors.newSingleThreadExecutor();
     // route to the parent zNode
-    String zNodeName;
+    private String zNodeName;
     // comma separated host:port pairs, each corresponding to a zk server
-    String zkConnectString;
+    private String zkConnectString;
     // the future will be completed as soon as we will be connected with zk
-    CompletableFuture connectionFuture;
+    private CompletableFuture connectionFuture;
     // zk client
-    ZooKeeper zooKeeper;
+    private ZooKeeper zooKeeper;
 
     /**
      * @param zNodeName       name of node which children will store variables

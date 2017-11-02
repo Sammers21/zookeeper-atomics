@@ -71,7 +71,7 @@ public class ZkAtomicVar {
         }
     }
 
-    String getAsString() {
+    public String getAsString() {
         return new String(getValue());
     }
 

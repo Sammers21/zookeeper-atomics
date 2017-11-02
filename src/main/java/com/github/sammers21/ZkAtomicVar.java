@@ -18,7 +18,6 @@ package com.github.sammers21;
 
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.KeeperException;
-import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
@@ -71,8 +70,18 @@ public class ZkAtomicVar {
         }
     }
 
+    /**
+     * @return string representation of data the variable hold
+     */
     public String getAsString() {
-        return new String(getValue());
+        return new String(getAsByteArr());
+    }
+
+    /**
+     * @return Data the variable hold
+     */
+    public byte[] getAsByteArr() {
+        return getValue();
     }
 
     protected ZkAtomicVar(String name, ZooKeeper zooKeeper, ZkVariables zkVariables) {
@@ -80,17 +89,6 @@ public class ZkAtomicVar {
         this.zooKeeper = zooKeeper;
         this.zkVariables = zkVariables;
     }
-
-//    protected Watcher watcher() {
-//        return event -> {
-////            if (event.getType() == Watcher.Event.EventType.NodeDataChanged) {
-////                String path = event.getPath();
-////                log.info("data changed at " + path);
-////                update(path);
-////                log.info("current value of variable " + name + " = " + getAsString());
-////            }
-//        };
-//    }
 
     /**
      * Force variable to check for updates

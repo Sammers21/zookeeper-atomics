@@ -50,6 +50,18 @@ public class ZkVarTestBase {
         );
     }
 
+    public void example(){
+        ZkVariables zkVariables = new ZkVariables(
+                "/my_variables",
+                "localhost:" + port
+        );
+        //
+        ZkAtomicVar hello = zkVariables.getOrCreate("hello", "how are you?");
+        ZkAtomicVar existed = zkVariables.get("hello");
+        existed.getAsByteArr();
+        existed.getAsString();
+    }
+
     /**
      * Stopping ZooKeeper server
      */
@@ -58,6 +70,7 @@ public class ZkVarTestBase {
         zkVariables.close();
         zkTestServer.stop();
         logDelmer();
+        log.info("Embedded ZooKeeper server stopped");
     }
 
     private void logDelmer() {

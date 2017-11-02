@@ -17,14 +17,11 @@
 package com.github.sammers21;
 
 
-import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
 public class ZkVarTest extends ZkVarTestBase {
-
-    private static final Logger log = Logger.getLogger(ZkVarTest.class);
 
     @Test
     public void shouldReturnNullIfVarIsNotExist() {

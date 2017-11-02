@@ -21,10 +21,7 @@ import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 
 import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * Represents a set of variables located in subZNodes of some ZNode
@@ -41,7 +38,7 @@ public class ZkVariables {
     public String zNodeName;
     // comma separated host:port pairs, each corresponding to a zk server
     private String zkConnectString;
-    // zk client
+    // zk client instance
     private ZooKeeper zooKeeper;
 
     /**

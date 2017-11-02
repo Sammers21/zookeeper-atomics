@@ -13,8 +13,7 @@ _Step 1._ Add the JitPack repository to your build file
 
 ```groovy
 repositories {
-			...
-			maven { url 'https://jitpack.io' }
+    maven { url 'https://jitpack.io' }
 }
 ```
 
@@ -22,7 +21,7 @@ _Step 2_. Add the dependency:
 
 ```groovy
 dependencies {
-		compile 'com.github.Sammers21:zookeeper-atomics:1.0.0'
+    compile 'com.github.Sammers21:zookeeper-atomics:1.0.0'
 }
 ```
 
@@ -31,22 +30,22 @@ dependencies {
 _Step 1._ Add the JitPack repository to your build file
 
 ```xml
-	<repositories>
-		<repository>
-		    <id>jitpack.io</id>
-		    <url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
 ```
 
 _Step 2_. Add the dependency:
 
 ```text
-	<dependency>
-	    <groupId>com.github.Sammers21</groupId>
-	    <artifactId>zookeeper-atomics</artifactId>
-	    <version>1.0.0</version>
-	</dependency>
+<dependency>
+    <groupId>com.github.Sammers21</groupId>
+    <artifactId>zookeeper-atomics</artifactId>
+    <version>1.0.0</version>
+</dependency>
 ```
 
 ### Usage
@@ -77,7 +76,7 @@ You also are welcome to change variables value:
 existed.changeValueTo("hello one more time");
 ```
 
-And even to getting value as string or byte array:
+And even to getting value as a string or a byte array:
 
 ```java
 String string = existed.getAsByteArr(); 

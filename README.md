@@ -55,7 +55,7 @@ Here is an example:
 ```java
 ZkVariables zkVariables = new ZkVariables(
             "/my_variables",
-            "localhost:" + port
+            "localhost:2181" // ZooKeeper server address
     );
 ```
 

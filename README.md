@@ -21,7 +21,7 @@ _Step 2_. Add the dependency:
 
 ```groovy
 dependencies {
-    compile 'com.github.Sammers21:zookeeper-atomics:1.0.0'
+    compile 'com.github.Sammers21:zookeeper-atomics:1.0.1'
 }
 ```
 
@@ -44,7 +44,7 @@ _Step 2_. Add the dependency:
 <dependency>
     <groupId>com.github.Sammers21</groupId>
     <artifactId>zookeeper-atomics</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 

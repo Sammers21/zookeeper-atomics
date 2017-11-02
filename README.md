@@ -40,7 +40,7 @@ _Step 1._ Add the JitPack repository to your build file
 
 _Step 2_. Add the dependency:
 
-```text
+```xml
 <dependency>
     <groupId>com.github.Sammers21</groupId>
     <artifactId>zookeeper-atomics</artifactId>

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.Sammers21;
+package com.github.sammers21;
 
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.KeeperException;

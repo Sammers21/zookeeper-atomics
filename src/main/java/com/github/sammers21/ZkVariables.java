@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.Sammers21;
+package com.github.sammers21;
 
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.*;
@@ -37,14 +37,10 @@ public class ZkVariables {
 
     private static final Logger log = Logger.getLogger(ZkVariables.class);
 
-    // for the first constructor
-    private ExecutorService executor = Executors.newSingleThreadExecutor();
     // route to the parent zNode
     public String zNodeName;
     // comma separated host:port pairs, each corresponding to a zk server
     private String zkConnectString;
-    // the future will be completed as soon as we will be connected with zk
-    private CompletableFuture connectionFuture;
     // zk client
     private ZooKeeper zooKeeper;
 
@@ -56,17 +52,13 @@ public class ZkVariables {
     public ZkVariables(String zNodeName, String zkConnectString) {
         this.zNodeName = zNodeName;
         this.zkConnectString = zkConnectString;
-
-        connectToZk(zkConnectString);
+        connectToZk();
     }
 
     /**
      * Connecting to Zookeeper in async way
-     *
-     * @param zkConnectString comma separated host:port pairs, each corresponding to a zk
-     *                        server. e.g. "127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002"
      */
-    private void connectToZk(String zkConnectString) {
+    private void connectToZk() {
         CountDownLatch connectionLatch = new CountDownLatch(1);
         try {
             zooKeeper = new ZooKeeper(zkConnectString, 2000, we -> {
@@ -78,13 +70,11 @@ public class ZkVariables {
             e.printStackTrace();
         }
 
-        connectionFuture = CompletableFuture.runAsync(() -> {
-            try {
-                connectionLatch.await();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }, executor);
+        try {
+            connectionLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -181,7 +171,6 @@ public class ZkVariables {
      */
     public void close() {
         try {
-            executor.shutdown();
             zooKeeper.close();
         } catch (InterruptedException e) {
             e.printStackTrace();

@@ -53,6 +53,15 @@ public class ZkVariables {
     }
 
     /**
+     * @param zNodeName name of node which children will store variables
+     * @param zooKeeper instance of connected zk client
+     */
+    public ZkVariables(String zNodeName, ZooKeeper zooKeeper) {
+        this.zNodeName = zNodeName;
+        this.zooKeeper = zooKeeper;
+    }
+
+    /**
      * Connecting to Zookeeper
      */
     private void connectToZk() {

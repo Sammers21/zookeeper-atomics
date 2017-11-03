@@ -21,15 +21,24 @@ import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
+/**
+ * Representation of variable located at some zNode : {@code path()}
+ */
 public class ZkAtomicVar {
 
     private static final Logger log = Logger.getLogger(ZkAtomicVar.class);
 
+    // variable name
     private String name;
+    // value of variable
     private byte[] value;
+    // link to a zookeeper client
     private ZooKeeper zooKeeper;
+    // link to the zKVariables which hold namespace info
     private ZkVariables zkVariables;
+    // information about zNode where the variable is stored
     private Stat stat = new Stat();
+    // synchronization lock
     private final Object lock = new Object();
 
     /**
@@ -48,11 +57,20 @@ public class ZkAtomicVar {
         this.value = value;
     }
 
-
+    /**
+     * Change value of variable to a given
+     *
+     * @param val given new value
+     */
     public void changeValueTo(String val) {
         changeValueTo(val.getBytes());
     }
 
+    /**
+     * Change value of variable to a given
+     *
+     * @param val given new value
+     */
     public void changeValueTo(byte[] val) {
         boolean retry = true;
         while (retry) {

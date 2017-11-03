@@ -53,7 +53,7 @@ public class ZkVariables {
     }
 
     /**
-     * Connecting to Zookeeper in async way
+     * Connecting to Zookeeper
      */
     private void connectToZk() {
         CountDownLatch connectionLatch = new CountDownLatch(1);
